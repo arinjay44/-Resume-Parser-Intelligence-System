@@ -1,0 +1,11 @@
+{
+  "resume_id": "resume_4",
+  "name": "Neha Verma",
+  "email": "neha@example.com",
+  "phone": "+9190000000420",
+  "skills": [
+    "machine learning",
+    "python",
+    "sql"
+  ]
+}
