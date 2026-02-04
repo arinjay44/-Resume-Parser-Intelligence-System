@@ -1,8 +1,5 @@
-import numpy as np
+from sklearn.metrics.pairwise import cosine_similarity
 
-def cosine_similarity(resume_embedding, job_embedding):
-    """
-    Returns similarity score between resume and job (0–100)
-    """
-    score = float(np.dot(resume_embedding, job_embedding))
+def compute_similarity(resume_vec, job_vec):
+    score = cosine_similarity([resume_vec], [job_vec])[0][0]
     return round(score * 100, 2)
