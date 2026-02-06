@@ -1,21 +1,19 @@
 {
-  "resume_id": "Arinjay Bhosale Final_Resume",
   "name": "Arinjay Bhosale",
   "email": "arinjaybhosale43@gmail.com",
   "phone": "+919890470627",
   "skills": [
-    "aws",
     "deep learning",
-    "flask",
-    "keras",
+    "linux",
     "machine learning",
+    "mongodb",
     "nlp",
     "numpy",
     "pandas",
     "python",
-    "scikit-learn",
+    "seaborn",
     "sql",
-    "statistics",
-    "tensorflow"
-  ]
+    "statistics"
+  ],
+  "resume_id": "Arinjay_Bhosale_Final_Resume"
 }

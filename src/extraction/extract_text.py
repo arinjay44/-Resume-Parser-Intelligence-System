@@ -1,6 +1,11 @@
+import re
 import pdfplumber
 from docx import Document
 from pathlib import Path
+
+
+RAW_DIR = Path("data/raw")
+PROCESSED_DIR = Path("data/processed")
 
 
 def extract_pdf(path: Path) -> str:
@@ -19,10 +24,6 @@ def extract_docx(path: Path) -> str:
 
 
 def extract_text(file_path: str) -> str:
-    """
-    Unified resume text extractor
-    Supports: PDF, DOCX
-    """
     path = Path(file_path)
 
     if not path.exists():
@@ -32,9 +33,37 @@ def extract_text(file_path: str) -> str:
 
     if suffix == ".pdf":
         return extract_pdf(path)
-
     elif suffix == ".docx":
         return extract_docx(path)
-
     else:
         raise ValueError(f"Unsupported file type: {suffix}")
+
+
+def safe_stem(p: Path) -> str:
+    # removes weird chars from filename
+    s = re.sub(r"[^a-zA-Z0-9_-]+", "_", p.stem)
+    return s.strip("_") or "resume"
+
+
+def main():
+    RAW_DIR.mkdir(parents=True, exist_ok=True)
+    PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
+
+    files = list(RAW_DIR.glob("*.pdf")) + list(RAW_DIR.glob("*.docx"))
+
+    if not files:
+        print("No PDF/DOCX files found in data/raw")
+        return
+
+    for f in files:
+        try:
+            text = extract_text(str(f))
+            out_file = PROCESSED_DIR / f"{safe_stem(f)}.txt"
+            out_file.write_text(text, encoding="utf-8", errors="ignore")
+            print(f"Saved: {out_file}")
+        except Exception as e:
+            print(f"Failed: {f.name} -> {e}")
+
+
+if __name__ == "__main__":
+    main()
