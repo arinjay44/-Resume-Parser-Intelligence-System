@@ -18,21 +18,23 @@ def clean_organizations(orgs):
     """
 
     blacklist_keywords = [
-        # roles
-        "associate", "engineer", "scientist", "executive",
+    # roles
+    "associate", "engineer", "scientist", "executive",
 
-        # ML / DS terms
-        "boost", "tree", "forest", "bayes", "naïve",
-        "xgboost", "statistics", "algorithm", "model",
+    # ML / DS terms
+    "ml", "ds", "ml & ds", "machine learning", "deep learning",
+    "data science", "artificial intelligence", "ai",
 
-        # skills / libs
-        "python", "sql", "numpy", "pandas",
-        "tensorflow", "keras", "scipy", "seaborn",
+    # skills / libs
+    "python", "sql", "numpy", "pandas",
+    "xgboost", "sklearn", "scikit", "pytorch",
+    "tensorflow", "keras", "scipy", "seaborn",
 
-        # misc noise
-        "eda", "project", "tool", "documentation",
-        "responsibilities", "performed"
-    ]
+    # misc noise
+    "eda", "project", "tool", "documentation",
+    "responsibilities", "performed"
+]
+
 
     valid = []
 
